@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fris</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_friskort">Fris Kort</string>
+    <string name="title_profil">Profil</string>
 </resources>
