@@ -1,8 +1,12 @@
 package com.example.fris.database
 
-//TODO: Entity og Room DB
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "dessert_table")
 data class Dessert(
-    val dessertName: String,
-    val description: String,
-    val innhold: String
+        @PrimaryKey val id : String,
+        val dessertName: String,
+        val description: String,
+        val innhold: String
 )

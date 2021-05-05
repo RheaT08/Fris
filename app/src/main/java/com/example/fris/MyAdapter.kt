@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fris.database.Dessert
 
 
-class MyAdapter(private var dessertDataset: List<String>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -31,13 +32,13 @@ class MyAdapter(private var dessertDataset: List<String>): RecyclerView.Adapter<
         // Replace the contents of a view (invoked by the layout manager)
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-            viewHolder.name.text = dessertDataset[position]
+            viewHolder.name.text = dessertDataset[position].dessertName
         }
 
         // Return the size of your dataset (invoked by the layout manager)
         override fun getItemCount() = dessertDataset.size
 
-        fun updateData(newData: List<String>) {
+        fun updateData(newData: List<Dessert>) {
             dessertDataset = newData
             notifyDataSetChanged()
         }

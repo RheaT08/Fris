@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.MyAdapter
 import com.example.fris.R
+import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -46,22 +47,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        displayMeny()
+        displayMeny(menu())
     }
 
 
 
-    private fun displayMeny(){
 
-        val rolledIceCreamMeny : MutableList<String> = mutableListOf(
-                "Sjokolade Rolled ice-cream",
-                "Vanilje Rolled Ice-cream",
-                "Skogsbær Rolled Ice-cream",
-                "Skogbaer Rolled Ice-cream"
-        )
+    private fun displayMeny(dessertMenu : MutableList<Dessert>){
+
 
         viewManager = LinearLayoutManager(requireContext())
-        viewAdapter = MyAdapter(rolledIceCreamMeny)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        viewAdapter = MyAdapter(dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
 
         recyclerView = dessert_recyclerview.apply {
@@ -81,5 +77,35 @@ class HomeFragment : Fragment() {
     }
 
 
+    //Manuelt lager Dessert-objektene
+    private fun menu() : MutableList<Dessert> {
+
+        //Oppretter dessert-objektene manuelt her
+        val des1 = Dessert("1",
+                "Sjokolade Rolled ice-cream",
+                "@strings/icecream_description",
+                "Kokos, Kakao")
+
+        val des2 = Dessert("2",
+                "Vanilje Rolled ice-cream",
+                "@strings/icecream_description",
+                "Kokos, Vanilje")
+
+        val des3 = Dessert("3",
+                "Skogsbær Rolled ice-cream",
+                "@strings/icecream_description",
+                "Kokos, blåbær, bringebær, bjørnebøær")
+
+        val des4 = Dessert("4",
+                "Skogsbær Rolled ice-cream",
+                "@strings/icecream_description",
+                "Kokos, jordbær")
+
+
+
+        val rolledIceCreamMeny : MutableList<Dessert> = mutableListOf(des1,des2,des3,des4)
+        return rolledIceCreamMeny
+
+    }
 
 }
