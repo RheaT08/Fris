@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">Fris</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_utforsk">Utforsk</string>
     <string name="title_friskort">Fris Kort</string>
     <string name="title_profil">Profil</string>
+    <string name="welcome_text">VELKOMMEN!</string>
+    <string name="welcome_text2">
+        Fris er det nye stedet hvor du kan kjøpe bekymringsfri iskrem, milkshake, og kaffe!
+    </string>
+    <string name="welcome_text3">
+        Fri for alle 14 matallergener, i tillegg er alt på menyen vegansk!
+    </string>
 </resources>

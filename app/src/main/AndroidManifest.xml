@@ -11,25 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fris">
-
-        <!--SPLASH SCREEN-->
+        <activity android:name=".LoginActivity"></activity>
+        <!-- SPLASH SCREEN -->
         <activity
             android:name=".SplashActivity"
             android:label="Fris"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:noHistory="true">                                          <!-- forhindrer splash screen å vise igjen ved å trykke på "back" -->
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!-- forhindrer splash screen å vise igjen ved å trykke på "back" -->
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>    <!-- Aktiviteten som først vises ved oppstart av appen-->
-                <action android:name="android.intent.action.MAIN"/>            <!--Entry point. Første aktivitet opprettet ved oppstart av appen-->
+                <category android:name="android.intent.category.LAUNCHER" /> <!-- Aktiviteten som først vises ved oppstart av appen -->
+                <action android:name="android.intent.action.MAIN" /> <!-- Entry point. Første aktivitet opprettet ved oppstart av appen -->
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
-        </activity>
-
-
+            android:label="@string/title_activity_main"></activity>
     </application>
 
 </manifest>

@@ -50,4 +50,14 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Annet
+    def biometricLibraryVersion = "1.0.1"
+    implementation "androidx.biometric:biometric:$biometricLibraryVersion"
+
+    // Kotlin
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha03"
+    implementation 'androidx.biometric:biometric:1.1.0'
+
+
 }

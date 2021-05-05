@@ -25,12 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            //Intent - tar brukeren med til neste aktivitet/fragment utifra om de er logget inn eller ikke.
-            //overfør brukeren videre fra LoginActivity til chatfragment(MainActivity)
-            //sjekker om id-en allerede er i sharedPref. Ved log out, skal den være slettet.
-            val activityIntent = Intent(this, MainActivity::class.java)
-
-
+            val activityIntent = Intent(this, LoginActivity::class.java)
             startActivity(activityIntent) //viderefører brukeren
             finish()
 
