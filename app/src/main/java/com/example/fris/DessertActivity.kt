@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
+import kotlinx.android.synthetic.main.activity_dessert.*
 
 class DessertActivity : AppCompatActivity() {
 
@@ -20,6 +21,10 @@ class DessertActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dessert)
 
+        leggKjop_btn.setOnClickListener {
+            val activityIntent = Intent(this, HandlekurvActivity::class.java)
+            startActivity(activityIntent)
+        }
 
     }
 

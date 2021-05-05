@@ -1,13 +1,16 @@
 package com.example.fris.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fris.DessertActivity
 import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
@@ -24,14 +27,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var dessertAdapter: MyAdapter
-    //private val cardView: CardView = findViewById(R.id.card_view)
+    private val cardView: CardView = findViewById(R.id.card_view)
 
-    /*
-       cardView.setOnClickListener {
-                    val activityIntent = Intent(view, DessertActivity::class.java)
-                    startActivity(activityIntent) //viderefører brukeren
-                }
-     */
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +47,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        cardView.setOnClickListener {
+            val activityIntent = Intent(activity, DessertActivity::class.java)
+            startActivity(activityIntent) //viderefører brukeren
+        }
+
 
 
         displayMeny(menu())

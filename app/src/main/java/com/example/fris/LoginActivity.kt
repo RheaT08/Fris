@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Log in uten bruker
         login2_btn.setOnClickListener {
-            val activityIntent = Intent(this, MainActivity::class.java)
+            val activityIntent = Intent(this, DessertActivity::class.java)
             startActivity(activityIntent) //viderefører brukeren
         }
 
