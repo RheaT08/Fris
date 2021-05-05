@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fris">
-        <activity android:name=".LoginActivity"></activity>
-        <!-- SPLASH SCREEN -->
+        <activity android:name=".DessertActivity"></activity>
+        <activity android:name=".LoginActivity" /> <!-- SPLASH SCREEN -->
         <activity
             android:name=".SplashActivity"
             android:label="Fris"
@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
     </application>
 
 </manifest>

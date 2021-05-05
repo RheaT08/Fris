@@ -12,11 +12,10 @@
         Fri for alle 14 matallergener, i tillegg er alt på menyen vegansk!
     </string>
 
-    <string name= "icecream_description">
+    <string name="icecream_description">
           Rolled ice-cream laget med kokosmelk og kakao. Velg en valgfri tilsetning og maks 3 forskjellige toppinger.
           Produktet og tilsetningene/toppingeneer selvfølgelig helt vegansk og 100% allergifritt.
     </string>
-
 
 
 </resources>

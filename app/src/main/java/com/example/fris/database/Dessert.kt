@@ -8,5 +8,7 @@ data class Dessert(
         @PrimaryKey val id : String,
         val dessertName: String,
         val description: String,
-        val innhold: String
+        val innhold: String,
+        val pris: String,
+        val bilde: String
 )

@@ -1,11 +1,17 @@
 package com.example.fris
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.database.Dessert
+import kotlinx.android.synthetic.main.dessert_cardview.*
 
 
 class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
@@ -24,7 +30,11 @@ class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
 
             // Create a new view, which defines the UI of the list item
-            val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.dessert_cardview, viewGroup, false) as View
+            val view = LayoutInflater.from(viewGroup.context).inflate(
+                R.layout.dessert_cardview,
+                viewGroup,
+                false
+            ) as View
 
             return ViewHolder(view)
         }
@@ -33,6 +43,7 @@ class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
             viewHolder.name.text = dessertDataset[position].dessertName
+
         }
 
         // Return the size of your dataset (invoked by the layout manager)
