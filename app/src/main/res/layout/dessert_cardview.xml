@@ -7,7 +7,7 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardBackgroundColor="#FFFFFF"
+    card_view:cardBackgroundColor="@color/main_blue"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="20dp"
     android:layout_margin="4dp"
@@ -27,6 +27,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif-black"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
