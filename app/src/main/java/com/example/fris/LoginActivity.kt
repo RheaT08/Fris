@@ -3,7 +3,6 @@ package com.example.fris
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.fris.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_login.*
 
 

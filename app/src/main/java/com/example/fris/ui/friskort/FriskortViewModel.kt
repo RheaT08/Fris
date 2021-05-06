@@ -1,13 +1,13 @@
-package com.example.fris.ui.dashboard
+package com.example.fris.ui.friskort
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class FriskortViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+
     }
     val text: LiveData<String> = _text
 }

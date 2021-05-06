@@ -1,4 +1,4 @@
-package com.example.fris.ui.home
+package com.example.fris.ui.utforsk
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
