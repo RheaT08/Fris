@@ -6,13 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".ui.profil.ProfilFragment">
 
-    <TextView
-        android:id="@+id/facebook_link"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/facebook"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.579">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/favoritter"
+            android:layout_gravity="center"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/medium_textSize" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:background="@color/secondary_pink" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:layout_gravity="center"
+            android:text="@string/mine_kvitteringer"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/medium_textSize" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:background="@color/secondary_pink" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/mine_kj_p"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/medium_textSize" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:background="@color/secondary_pink" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:layout_gravity="center"
+            android:text="@string/konto"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/medium_textSize" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:background="@color/secondary_pink" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="194dp"
+        android:layout_height="126dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <ImageView
+            android:id="@+id/insta_imageview"
+            android:layout_width="65dp"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:src="@drawable/fris_some_insta" />
+
+        <ImageView
+            android:id="@+id/email_imageview"
+            android:layout_width="63dp"
+            android:layout_height="59dp"
+            android:layout_marginBottom="100dp"
+            android:src="@drawable/fris_some_mail" />
+
+        <ImageView
+            android:id="@+id/facebook_imageview"
+            android:layout_width="63dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:src="@drawable/fris_some_face" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 //SplashActivity
 //Implementasjon av Room DB og lagring av minst 1 Entitet  - Ved bestilling
 //TODO: Implementering av notifikasjon og sending av dette.  -> NOTIFICATION
-//TODO: Fingeravtrykk sensor (Biometri). Kamera. Webview. Bruk minst 1 Hardware -> WEBVIEW
-// -> Give us rating on our website/google restaurants. open google. 
+//Bruk minst 1 Hardware -> WEBVIEW . FACEBOOK logoen på profil vil åpne et webview til facebook siden.
 //TODO: Ikke hardkodet farger, tekster, og størrelser.
 
 //Tasks

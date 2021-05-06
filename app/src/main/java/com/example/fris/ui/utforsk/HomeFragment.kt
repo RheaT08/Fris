@@ -1,16 +1,20 @@
 package com.example.fris.ui.utforsk
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fris.DessertActivity
 import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
+import kotlinx.android.synthetic.main.dessert_cardview.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -35,12 +39,6 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-       // val cardView: CardView = findViewById(R.id.card_view)
-       // card_view.setOnClickListener {
-        // val activityIntent = Intent(activity, DessertActivity::class.java)
-         //   startActivity(activityIntent) //viderefører brukeren
-        //}
-
         return root
     }
 
@@ -50,17 +48,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         displayMeny(menu())
+
     }
 
 
 
-    //TODO: Scroll horizontally
+
     private fun displayMeny(dessertMenu: MutableList<Dessert>){
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter({},dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        viewAdapter = MyAdapter(card,dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+
+
         //Lag egen cardviewlistener, hva som skjer osv når cardview trykkes.
+        car
 
         recyclerView = dessert_recyclerview.apply {
             // use this setting to improve performance if you know that changes
@@ -74,6 +76,7 @@ class HomeFragment : Fragment() {
             //adapter = viewAdapter
             dessert_recyclerview.adapter = viewAdapter
         }
+
 
 
     }
