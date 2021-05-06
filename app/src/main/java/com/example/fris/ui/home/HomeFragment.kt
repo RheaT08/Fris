@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var dessertAdapter: MyAdapter
-    private val cardView: CardView = findViewById(R.id.card_view)
 
 
 
@@ -40,6 +39,12 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
+       // val cardView: CardView = findViewById(R.id.card_view)
+       // card_view.setOnClickListener {
+        // val activityIntent = Intent(activity, DessertActivity::class.java)
+         //   startActivity(activityIntent) //viderefører brukeren
+        //}
+
         return root
     }
 
@@ -47,13 +52,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        cardView.setOnClickListener {
-            val activityIntent = Intent(activity, DessertActivity::class.java)
-            startActivity(activityIntent) //viderefører brukeren
-        }
-
-
 
         displayMeny(menu())
     }
@@ -65,8 +63,8 @@ class HomeFragment : Fragment() {
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
-
+        viewAdapter = MyAdapter({},dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        //Lag egen cardviewlistener, hva som skjer osv når cardview trykkes.
 
         recyclerView = dessert_recyclerview.apply {
             // use this setting to improve performance if you know that changes

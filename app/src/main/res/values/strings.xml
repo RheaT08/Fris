@@ -17,6 +17,16 @@
           Produktet og tilsetningene/toppingeneer selvfølgelig helt vegansk og 100% allergifritt.
     </string>
     <string name="leggKjop">legg i handlekurv</string>
+    <string name="din_bestilling">Din Bestilling</string>
+    <string name="hentes_p_akerbrygge">Hentes På Akerbrygge</string>
+    <string name="hentes_om_10_min">Hentes om 10 min</string>
+    <string name="produkter">Produkter</string>
+    <string name="rolled_ice_cream_69">Rolled ice-cream 69 -</string>
+    <string name="sum_69">SUM                   69-</string>
+    <string name="betal_og_send_bestilling">betal og send bestilling</string>
+    <string name="description">Description</string>
+    <string name="fortsett_uten_bruker">Fortsett uten bruker</string>
+    <string name="logg_inn">Logg inn</string>
 
 
 </resources>

@@ -14,16 +14,13 @@ import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.dessert_cardview.*
 
 
-class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(var cardClicklistener:(/*hva som sendes tilbake*/) -> Unit, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
-
+    //TODO: LAGE EGEN KLASSE AV DETTE, HVOR DU HAR ALT AV TEXT OG BILDER LAGRET (SE CHATBUBBLEVIEW FRA SMALLTALK).
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             val name: TextView = view.findViewById(R.id.name_textview)
 
-            init {
-                // Define click listener for the ViewHolder's View.
-            }
         }
 
         // Create new views (invoked by the layout manager)
@@ -43,6 +40,9 @@ class MyAdapter(private var dessertDataset: List<Dessert>): RecyclerView.Adapter
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
             viewHolder.name.text = dessertDataset[position].dessertName
+
+            //cardClicklistener. håndterer hvilken kort da som blir trykket på, og du sender det tilbake til Home. for eksempel dessert
+            //som blir trykket på. Utifra det intenter du til neste activity.
 
         }
 

@@ -12,12 +12,15 @@ import androidx.navigation.ui.setupWithNavController
 //Minimum 3 fragments - DONE
 //SplashActivity
 //Implementasjon av Room DB og lagring av minst 1 Entitet  - Ved bestilling
-//TODO: Fingeravtrykk sensor (Biometri). Kamera. Webview.
+//TODO: Implementering av notifikasjon og sending av dette.  -> NOTIFICATION
+//TODO: Fingeravtrykk sensor (Biometri). Kamera. Webview. Bruk minst 1 Hardware -> WEBVIEW
+// -> Give us rating on our website/google restaurants. open google. 
 //TODO: Ikke hardkodet farger, tekster, og størrelser.
 
 //Tasks
 //TODO: Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse
 //TODO: Sett opp Bestillings flyt
+//TODO: Make cardviews clickable
 //Lage iskrem objekter og velg en som entity. Sett opp adapter med strings på meny, bytt med objektene og tilhærende image.
 
 

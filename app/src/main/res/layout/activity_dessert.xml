@@ -28,13 +28,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Description" />
+            android:textColor="@color/main_brown"
+            android:text="@string/description" />
 
         <TextView
             android:id="@+id/Innhold_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:textColor="@color/main_brown"
             android:text="TextView" />
 
         <TextView
@@ -43,6 +45,7 @@
             android:layout_marginBottom="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/main_brown"
             android:text="TextView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
