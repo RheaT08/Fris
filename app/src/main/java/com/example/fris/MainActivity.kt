@@ -17,8 +17,8 @@ import androidx.navigation.ui.setupWithNavController
 //TODO: Ikke hardkodet farger, tekster, og størrelser.
 
 //Tasks
-//TODO: Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse
-//TODO: Sett opp Bestillings flyt
+//TODO: Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse - KOBLE DETTE
+//TODO: Sett opp Bestillings flyT
 //TODO: Make cardviews clickable
 //Lage iskrem objekter og velg en som entity. Sett opp adapter med strings på meny, bytt med objektene og tilhærende image.
 

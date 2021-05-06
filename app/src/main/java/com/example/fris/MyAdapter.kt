@@ -2,22 +2,20 @@ package com.example.fris
 
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.dessert_cardview.*
 
 
-class MyAdapter(var cardClicklistener:(View) -> Unit, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(var context: Context, var cardClicklistener: Intent, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     //TODO: LAGE EGEN KLASSE AV DETTE, HVOR DU HAR ALT AV TEXT OG BILDER LAGRET (SE CHATBUBBLEVIEW FRA SMALLTALK).
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -43,12 +41,22 @@ class MyAdapter(var cardClicklistener:(View) -> Unit, private var dessertDataset
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
             viewHolder.name.text = dessertDataset[position].dessertName
+            var pic = dessertDataset[position].bilde
+
+            viewHolder.image.setImageResource(pic)
+
+            viewHolder.name.setOnClickListener {
+                Toast.makeText(context.applicationContext,"ON", Toast.LENGTH_SHORT).show()
+
+            }
+
+            viewHolder.image.setOnClickListener {
+                Toast.makeText(context.applicationContext,"This is ice cream", Toast.LENGTH_SHORT).show()
+            }
 
             //cardClicklistener. håndterer hvilken kort da som blir trykket på, og du sender det tilbake til Home. for eksempel dessert
             //som blir trykket på. Utifra det intenter du til neste activity fra HomeFragment.
-            viewHolder.image.setOnClickListener{
-                cardClicklistener(viewHolder.image)
-            }
+
         }
 
 

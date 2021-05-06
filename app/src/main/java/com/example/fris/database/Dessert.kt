@@ -1,5 +1,6 @@
 package com.example.fris.database
 
+import android.graphics.drawable.Drawable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,5 +11,5 @@ data class Dessert(
         val description: String,
         val innhold: String,
         val pris: String,
-        val bilde: String
+        val bilde: Int
 )

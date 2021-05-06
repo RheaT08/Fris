@@ -5,16 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.DessertActivity
+import com.example.fris.MainActivity
 import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.dessert_cardview.*
+import kotlinx.android.synthetic.main.fragment_friskort.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -58,11 +59,12 @@ class HomeFragment : Fragment() {
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(card,dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        viewAdapter = MyAdapter( requireContext(),
+            cardClicklistener = Intent(requireContext(), DessertActivity::class.java)
+            ,dessertMenu)  //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
 
         //Lag egen cardviewlistener, hva som skjer osv når cardview trykkes.
-        car
 
         recyclerView = dessert_recyclerview.apply {
             // use this setting to improve performance if you know that changes
@@ -90,16 +92,15 @@ class HomeFragment : Fragment() {
             "1",
             "Sjokolade Rolled ice-cream",
             "@strings/icecream_description",
-            "Kokos, Kakao", "69 kr",
-            "@drawable/image_10"
+            "Kokos, Kakao", "69 kr", R.drawable.image_10
+
         )
 
         val des2 = Dessert(
             "2",
             "Vanilje Rolled ice-cream",
             "@strings/icecream_description",
-            "Kokos, Vanilje", "69 kr",
-            "@drawable/image_10"
+            "Kokos, Vanilje", "69 kr", R.drawable.image_8
         )
 
         val des3 = Dessert(
@@ -107,15 +108,15 @@ class HomeFragment : Fragment() {
             "Skogsbær Rolled ice-cream",
             "@strings/icecream_description",
             "Kokos, blåbær, bringebær, bjørnebøær", "69 kr",
-            "@drawable/image_10"
+            R.drawable.image_7
         )
 
         val des4 = Dessert(
             "4",
-            "Skogsbær Rolled ice-cream",
+            "Jordbær Rolled ice-cream",
             "@strings/icecream_description",
             "Kokos, jordbær", "69 kr",
-            "@drawable/image_10"
+            R.drawable.image_9
         )
 
 
