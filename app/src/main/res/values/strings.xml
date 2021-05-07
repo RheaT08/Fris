@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Fris</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Utforsk</string>
     <string name="title_utforsk">Utforsk</string>
     <string name="title_friskort">Fris Kort</string>
     <string name="title_profil">Profil</string>

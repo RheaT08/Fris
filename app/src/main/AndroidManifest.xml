@@ -11,13 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fris">
-        <activity android:name=".BestillingActivity"></activity>
-        <activity android:name=".HandlekurvActivity" />
-        <activity android:name=".DessertActivity" />
+
+        <activity
+            android:name=".BestillingActivity"
+            android:label="Betaling " />
+
+
+        <activity android:name=".HandlekurvActivity"
+                  android:label="Din Handlekurv" />
+
+        <activity
+            android:name=".DessertActivity"
+            android:label="Rolled ice-cream"
+            >
+        </activity>
+
         <activity android:name=".LoginActivity" /> <!-- SPLASH SCREEN -->
         <activity
             android:name=".SplashActivity"
-            android:label="Fris"
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!-- forhindrer splash screen å vise igjen ved å trykke på "back" -->
             <intent-filter>
@@ -25,6 +36,8 @@
                 <action android:name="android.intent.action.MAIN" /> <!-- Entry point. Første aktivitet opprettet ved oppstart av appen -->
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />

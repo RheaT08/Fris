@@ -1,21 +1,26 @@
 package com.example.fris.ui.utforsk
 
+import android.annotation.SuppressLint
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.DessertActivity
-import com.example.fris.MainActivity
 import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
-import kotlinx.android.synthetic.main.dessert_cardview.*
-import kotlinx.android.synthetic.main.fragment_friskort.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -30,7 +35,11 @@ class HomeFragment : Fragment() {
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var dessertAdapter: MyAdapter
 
-
+    //NOTIFICATIONS
+    private lateinit var notificationBtn : Button
+    private lateinit var notificationManager : NotificationManager
+    private val channelId = "com.rhea.fris.important.notifications"
+    private var counter = 0
 
     companion object {
 
@@ -78,7 +87,7 @@ class HomeFragment : Fragment() {
         }
 
 
-        fun getDessert(id_en : String) : Dessert{
+        fun getDessert(id_en: String) : Dessert{
             val list = menu()  //gir meg menyListen
             lateinit var iskremen : Dessert
 
@@ -94,13 +103,14 @@ class HomeFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+
 
         return root
     }
@@ -109,6 +119,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //sette notification her
+        notificationManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        createNotificationChannel()
+
+        notification_btn.setOnClickListener {
+            createAndSendNotification()
+        }
 
         displayMeny(menu())
 
@@ -121,7 +139,7 @@ class HomeFragment : Fragment() {
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(requireContext(),{cardOnClick()}, dessertMenu) //cardOnClick callback, håndterer når du trykker på spesifikk kort.
+        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu) //cardOnClick callback, håndterer når du trykker på spesifikk kort.
                                                                                 //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
 
@@ -144,10 +162,44 @@ class HomeFragment : Fragment() {
 
     //Lag egen cardviewlistener, hva som skjer osv når cardview (eller i dette tilfellet textview, imageview) trykkes
     private fun cardOnClick(){
-        valgt_iskrem = "3"
+        valgt_iskrem = "3"  //TODO: Finne ut hvordan Myadapter sender Dessert-objekt tilbake. Så du kan inhente id-en her.
         val activityIntent = Intent(requireContext(), DessertActivity::class.java)  //send iskrem id.
         startActivity(activityIntent)
     }
 
+
+    //NOTIFICATIONS
+
+    //Her lager vi egen channel for notifications lokalt.
+    @SuppressLint("NewApi")
+    private fun createNotificationChannel(){
+
+        val channel = NotificationChannel(channelId, "Handlekurv er fylt!", NotificationManager.IMPORTANCE_HIGH)
+
+        channel.description = "Når du har varer i din handlekurv"
+       // channel.enableLights(false)
+       // channel.lightColor = Color.BLUE
+        channel.enableVibration(true)
+        channel.vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
+
+        notificationManager.createNotificationChannel(channel) // her oppretter/sender vi kanalen vår i NotificationManager-klassen
+
+    }
+
+
+    @SuppressLint("NewApi")
+    private fun createAndSendNotification(){
+
+        val notificationId = counter
+
+        val notification = Notification.Builder(activity, channelId)
+                .setContentTitle("Hei der!")
+                .setContentText("Rolled ice-cream står i din handlekurv.")
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .build()
+
+        notificationManager.notify(notificationId, notification)
+        counter++
+    }
 
 }

@@ -1,12 +1,14 @@
 package com.example.fris
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 //PRIMÆR TEKNISKE KRAV
 //Minimum 3 fragments - DONE
@@ -19,6 +21,7 @@ import androidx.navigation.ui.setupWithNavController
 //Tasks
 // Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse - KOBLE DETTE
 //TODO: Sett opp Bestillings flyt
+//TODO: Få tilbake dessert-objekt fra myadapter, og sende dens id til Dessertactivity.
 //Make cardviews clickable or text and image
 //Lage iskrem objekter og velg en som entity. Sett opp adapter med strings på meny, bytt med objektene og tilhærende image.
 
@@ -33,5 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
+
+        // Define ActionBar object. Fargen på Actionbar endres her.
+        val actionBar: ActionBar? = supportActionBar
+        val colorDrawable = ColorDrawable(Color.parseColor("#97D1D9"))
+        // Set BackgroundDrawable
+        actionBar?.setBackgroundDrawable(colorDrawable)
+
     }
 }
