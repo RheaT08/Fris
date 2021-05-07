@@ -12,10 +12,11 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.database.Dessert
+import com.example.fris.ui.profil.WebViewFragment
 import kotlinx.android.synthetic.main.dessert_cardview.*
 
 
-class MyAdapter(var context: Context, var cardClicklistener: Intent, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(var context: Context, var cardClicklistener:(Dessert) -> Unit, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     //TODO: LAGE EGEN KLASSE AV DETTE, HVOR DU HAR ALT AV TEXT OG BILDER LAGRET (SE CHATBUBBLEVIEW FRA SMALLTALK).
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -46,17 +47,15 @@ class MyAdapter(var context: Context, var cardClicklistener: Intent, private var
             viewHolder.image.setImageResource(pic)
 
             viewHolder.name.setOnClickListener {
-                Toast.makeText(context.applicationContext,"ON", Toast.LENGTH_SHORT).show()
-
+                cardClicklistener(dessertDataset[position])
             }
 
             viewHolder.image.setOnClickListener {
-                Toast.makeText(context.applicationContext,"This is ice cream", Toast.LENGTH_SHORT).show()
+                cardClicklistener(dessertDataset[position])
             }
 
             //cardClicklistener. håndterer hvilken kort da som blir trykket på, og du sender det tilbake til Home. for eksempel dessert
             //som blir trykket på. Utifra det intenter du til neste activity fra HomeFragment.
-
         }
 
 

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/dessert_pic"
             android:layout_width="match_parent"
             android:layout_height="376dp"
             android:layout_marginBottom="10dp"
@@ -29,10 +29,10 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textColor="@color/main_brown"
-            android:text="@string/description" />
+            android:text="@string/icecream_description" />
 
         <TextView
-            android:id="@+id/Innhold_textview"
+            android:id="@+id/innhold_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"

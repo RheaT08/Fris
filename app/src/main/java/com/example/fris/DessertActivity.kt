@@ -1,20 +1,16 @@
 package com.example.fris
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
+import com.example.fris.database.Dessert
+import com.example.fris.ui.utforsk.HomeFragment
 import kotlinx.android.synthetic.main.activity_dessert.*
 
-class DessertActivity : AppCompatActivity() {
+class DessertActivity : AppCompatActivity(){
 
-    /*
-     private val cardView: CardView = findViewById(R.id.card_view)
-        cardView.setOnClickListener {
-            val activityIntent = Intent(this, DessertActivity::class.java)
-            startActivity(activityIntent) //viderefører brukeren
-        }
-     */
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +21,18 @@ class DessertActivity : AppCompatActivity() {
             val activityIntent = Intent(this, HandlekurvActivity::class.java)
             startActivity(activityIntent)
         }
+
+        dessertDetails()
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun dessertDetails(){
+
+        val dessert_objekt = HomeFragment.getDessert(HomeFragment.valgt_iskrem)
+        dessert_pic.setImageResource(dessert_objekt.bilde)
+        innhold_textview.text = "Innhold: " + dessert_objekt.innhold
+        pris_textview.text = "Pris: " + dessert_objekt.pris
 
     }
 

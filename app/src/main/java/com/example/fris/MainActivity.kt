@@ -13,13 +13,13 @@ import androidx.navigation.ui.setupWithNavController
 //SplashActivity
 //Implementasjon av Room DB og lagring av minst 1 Entitet  - Ved bestilling
 //TODO: Implementering av notifikasjon og sending av dette.  -> NOTIFICATION
-//Bruk minst 1 Hardware -> WEBVIEW . FACEBOOK logoen på profil vil åpne et webview til facebook siden.
-//TODO: Ikke hardkodet farger, tekster, og størrelser.
+//TODO: Bruk minst 1 Hardware -> WEBVIEW . FACEBOOK logoen på profil vil åpne et webview til facebook siden.
+//Ikke hardkodet farger, tekster, og størrelser.
 
 //Tasks
-//TODO: Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse - KOBLE DETTE
-//TODO: Sett opp Bestillings flyT
-//TODO: Make cardviews clickable
+// Sett opp Menu page -> Dessert page -> Bestill -> Bestillingsbekreftelse - KOBLE DETTE
+//TODO: Sett opp Bestillings flyt
+//Make cardviews clickable or text and image
 //Lage iskrem objekter og velg en som entity. Sett opp adapter med strings på meny, bytt med objektene og tilhærende image.
 
 
