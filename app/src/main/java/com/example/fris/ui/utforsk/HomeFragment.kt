@@ -1,18 +1,16 @@
 package com.example.fris.ui.utforsk
 
-import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.annotation.RequiresApi
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +20,10 @@ import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
+
+//TODO: Fiks push notifications
+//TODO: Callback, fiks dessert levering
+//TODO: Fiks webview
 
 
 class HomeFragment : Fragment() {
@@ -112,6 +114,7 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
 
+
         return root
     }
 
@@ -124,7 +127,7 @@ class HomeFragment : Fragment() {
         notificationManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         createNotificationChannel()
 
-        notification_btn.setOnClickListener {
+        pushNotif_btn.setOnClickListener {
             createAndSendNotification()
         }
 
@@ -141,8 +144,6 @@ class HomeFragment : Fragment() {
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
         viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu) //cardOnClick callback, håndterer når du trykker på spesifikk kort.
                                                                                 //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
-
-
 
 
         recyclerView = dessert_recyclerview.apply {
@@ -171,7 +172,6 @@ class HomeFragment : Fragment() {
     //NOTIFICATIONS
 
     //Her lager vi egen channel for notifications lokalt.
-    @SuppressLint("NewApi")
     private fun createNotificationChannel(){
 
         val channel = NotificationChannel(channelId, "Handlekurv er fylt!", NotificationManager.IMPORTANCE_HIGH)
@@ -186,8 +186,6 @@ class HomeFragment : Fragment() {
 
     }
 
-
-    @SuppressLint("NewApi")
     private fun createAndSendNotification(){
 
         val notificationId = counter
