@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,11 +18,6 @@ import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
-
-//TODO: Fiks push notifications
-//TODO: Callback, fiks dessert levering
-//TODO: Fiks webview
-
 
 class HomeFragment : Fragment() {
 
@@ -38,7 +31,6 @@ class HomeFragment : Fragment() {
     private lateinit var dessertAdapter: MyAdapter
 
     //NOTIFICATIONS
-    private lateinit var notificationBtn : Button
     private lateinit var notificationManager : NotificationManager
     private val channelId = "com.rhea.fris.important.notifications"
     private var counter = 0
@@ -142,7 +134,7 @@ class HomeFragment : Fragment() {
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu) //cardOnClick callback, håndterer når du trykker på spesifikk kort.
+        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu)//cardOnClick callback, håndterer når du trykker på spesifikk kort.
                                                                                 //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
 
@@ -162,8 +154,9 @@ class HomeFragment : Fragment() {
     }
 
     //Lag egen cardviewlistener, hva som skjer osv når cardview (eller i dette tilfellet textview, imageview) trykkes
-    private fun cardOnClick(){
-        valgt_iskrem = "3"  //TODO: Finne ut hvordan Myadapter sender Dessert-objekt tilbake. Så du kan inhente id-en her.
+    private fun cardOnClick() {
+        //TODO: Finne ut hvordan Myadapter sender Dessert-objekt tilbake. Så du kan inhente id-en her.
+        valgt_iskrem = "0"
         val activityIntent = Intent(requireContext(), DessertActivity::class.java)  //send iskrem id.
         startActivity(activityIntent)
     }

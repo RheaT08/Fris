@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.database.Dessert
 import com.example.fris.ui.profil.WebViewFragment
+import com.example.fris.ui.utforsk.HomeFragment
 import kotlinx.android.synthetic.main.dessert_cardview.*
 
 
@@ -42,16 +43,18 @@ class MyAdapter(var context: Context, var cardClicklistener:(Dessert) -> Unit, p
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
             viewHolder.name.text = dessertDataset[position].dessertName
-            var pic = dessertDataset[position].bilde
+            val pic = dessertDataset[position].bilde
 
             viewHolder.image.setImageResource(pic)
 
             viewHolder.name.setOnClickListener {
                 cardClicklistener(dessertDataset[position])
+                HomeFragment.valgt_iskrem = dessertDataset[position].id
             }
 
             viewHolder.image.setOnClickListener {
                 cardClicklistener(dessertDataset[position])
+                HomeFragment.valgt_iskrem = dessertDataset[position].id
             }
 
             //cardClicklistener. håndterer hvilken kort da som blir trykket på, og du sender det tilbake til Home. for eksempel dessert
