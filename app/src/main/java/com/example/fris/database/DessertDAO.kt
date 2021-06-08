@@ -7,6 +7,7 @@ import androidx.room.Query
 
 
 //mellomleddet, Appdatabasen til objektene. Forteller hva databasen kan gjøre.
+//Databasen vil lagre all "kjøpte" desserter. "Kvitterings" databasen.
 interface DessertDAO {
 
     @Delete

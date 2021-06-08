@@ -14,6 +14,8 @@ class HandlekurvActivity : AppCompatActivity() {
         setContentView(R.layout.activity_handlekurv)
 
         betal_btn.setOnClickListener {
+
+            //From Activity to Betalingsfragment
             val activityIntent = Intent(this, BestillingActivity::class.java)
             startActivity(activityIntent)
         }

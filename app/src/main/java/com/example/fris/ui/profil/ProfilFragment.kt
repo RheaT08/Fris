@@ -38,15 +38,23 @@ class ProfilFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         linkFacebookImage.setOnClickListener{
             //NAVIGATE BETWEEN FRAGMENTS
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, WebViewFragment())?.commitNow()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, WebViewFragment())
+                ?.commitNow()
         }
 
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        profilViewModel = ViewModelProvider(this).get(ProfilViewModel::class.java)
+        // TODO: Use the ViewModel
     }
 
 
