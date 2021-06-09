@@ -10,6 +10,8 @@ interface DessertDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDessert(userToInsert: Dessert)
 
+    @Query("SELECT * FROM dessert_table WHERE id = :icecreamId")
+    fun chosenDessert(icecreamId: String): Dessert
 
     @Query("SELECT * FROM dessert_table")
     fun getAllDesserts(): List<Dessert>

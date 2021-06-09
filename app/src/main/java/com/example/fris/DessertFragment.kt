@@ -31,7 +31,7 @@ class DessertFragment : Fragment() {
         return view
     }
 
-
+/*
     @SuppressLint("SetTextI18n")
     fun dessertDetails(){
 
@@ -40,5 +40,5 @@ class DessertFragment : Fragment() {
         innhold_textview.text = "Innhold: " + dessertObject.innhold
         pris_textview.text = "Pris: " + dessertObject.pris
 
-    }
+    } */
 }

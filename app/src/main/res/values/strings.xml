@@ -44,6 +44,7 @@
     <string name="tilbake_til_start_Btn">tilbake til start</string>
     <string name="bank_Btn">Bank</string>
     <string name="vipps_btn">Vipps</string>
+    <string name="din_handlekurv_btn">Din Handlekurv</string>
 
 
 </resources>

@@ -1,6 +1,5 @@
 package com.example.fris.ui.utforsk
 
-import android.app.AlertDialog
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,21 +9,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.*
-import com.example.fris.database.AppDatabase
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
 
 //Wednesday
-//TODO: Save menu dessert in Database. User insert DAO.
-//TODO: DAO - Get locally saved menu from Database. Use getDessert() from table for Adapter
+//Done: Save menu dessert in Database. User insert DAO.
+//Done: DAO - Get locally saved menu from Database. Use getDessert() from table for Adapter
 //TODO: Fullfør Appens flyter
 
 //Thursday:
@@ -42,7 +37,6 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var dessertAdapter: MyAdapter
 
     //NOTIFICATIONS
     private lateinit var notificationManager : NotificationManager
@@ -52,63 +46,6 @@ class HomeFragment : Fragment() {
     companion object {
 
          var valgt_iskrem = "0"
-
-
-        //Manuelt lager Dessert-objektene
-        fun menu() : MutableList<Dessert> {
-
-
-            //Oppretter dessert-objektene manuelt her
-            val des1 = Dessert(
-                    "1",
-                    "Sjokolade Rolled ice-cream",
-                    "@strings/icecream_description",
-                    "Kokos, Kakao", "69 kr", R.drawable.image_10
-
-            )
-
-            val des2 = Dessert(
-                    "2",
-                    "Vanilje Rolled ice-cream",
-                    "@strings/icecream_description",
-                    "Kokos, Vanilje", "69 kr", R.drawable.image_8
-            )
-
-            val des3 = Dessert(
-                    "3",
-                    "Skogsbær Rolled ice-cream",
-                    "@strings/icecream_description",
-                    "Kokos, blåbær, bringebær, bjørnebøær", "69 kr",
-                    R.drawable.image_7
-            )
-
-            val des4 = Dessert(
-                    "4",
-                    "Jordbær Rolled ice-cream",
-                    "@strings/icecream_description",
-                    "Kokos, jordbær", "69 kr",
-                    R.drawable.image_9
-            )
-
-
-            val rolledIceCreamMeny : MutableList<Dessert> = mutableListOf(des1, des2, des3, des4)
-
-            return rolledIceCreamMeny
-
-        }
-
-
-        fun getDessert(id_en: String) : Dessert{
-            val list = menu()  //gir meg menyListen
-            lateinit var iskremen : Dessert
-
-            for(iskrem in list){
-                if(iskrem.id == id_en){
-                    iskremen = iskrem
-                }
-            }
-            return iskremen
-        }
 
     }//end of companion object
 
@@ -140,8 +77,7 @@ class HomeFragment : Fragment() {
             createAndSendNotification()
         }
 
-        //menu() //oppretter dessert-objektene
-        saveToDatabase()
+        saveToDatabase() //Metoden oppretter dessert-objektene, og lagrer disse i Room databasen
         displayMeny()
 
 
@@ -150,7 +86,7 @@ class HomeFragment : Fragment() {
 
     private fun saveToDatabase(){
 
-        val desserts = menu()
+        val desserts = homeViewModel.menu()
 
         //SAVE LOCALLY TO DATABASE
         for(dessert in desserts){
@@ -159,12 +95,10 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    private fun displayMeny(/*dessertMenu: MutableList<Dessert>*/){
-
+    private fun displayMeny(){
 
         Thread {
-            val theMenu = AppDatabase.getDatabase(FrisApplication.application.applicationContext).dessertDao().getAllDesserts()
+            val theMenu = homeViewModel.getMenu()
 
             activity?.runOnUiThread {
                 viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.

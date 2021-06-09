@@ -23,7 +23,7 @@
                   android:label="Din Handlekurv" />
 
         <activity
-            android:name=".DessertActivity"
+            android:name=".ui.utforsk.DessertActivity"
             android:label="Rolled ice-cream"
             >
         </activity>
