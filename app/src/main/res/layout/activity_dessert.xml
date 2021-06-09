@@ -33,6 +33,7 @@
                     android:id="@+id/description_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/small_textSize"
                     android:padding="5dp"
                     android:text="@string/icecream_description"
                     android:textColor="@color/main_brown" />
@@ -42,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="TextView"
+                    android:textSize="@dimen/small_textSize"
                     android:textColor="@color/main_brown" />
 
                 <TextView
@@ -51,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:padding="5dp"
-                    android:text="TextView"
+                    android:textSize="@dimen/small_textSize"
                     android:textColor="@color/main_brown" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,8 +72,11 @@
                             android:id="@+id/leggKjop_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:padding="5dp"
-                            android:text="@string/leggKjop" />
+                            android:text="@string/leggKjop"
+                            app:cornerRadius="20dp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

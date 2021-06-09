@@ -1,13 +1,10 @@
 package com.example.fris.database
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 
 //mellomleddet, Appdatabasen til objektene. Forteller hva databasen kan gjøre.
-//Databasen vil lagre all "kjøpte" desserter. "Kvitterings" databasen.
+@Dao
 interface DessertDAO {
 
     @Delete
@@ -18,5 +15,8 @@ interface DessertDAO {
 
     @Query("SELECT * FROM dessert_table LIMIT 1")
     fun getDessert(): Dessert?
+
+    @Query("SELECT * FROM dessert_table")
+    fun getAllDesserts(): List<Dessert>
 
 }

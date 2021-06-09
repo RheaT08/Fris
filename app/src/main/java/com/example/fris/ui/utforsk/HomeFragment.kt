@@ -14,10 +14,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.DessertActivity
+import com.example.fris.DessertFragment
 import com.example.fris.MyAdapter
 import com.example.fris.R
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
+
+//Wednesday
+//TODO: Save menu dessert in Database. User insert DAO.
+//TODO: DAO - Get locally saved menu from Database. Use getDessert() from table for Adapter
+//TODO: Fullfør Appens flyter
+
+//Thursday:
+//TODO: Navigation components: Replace activities with fragments.
+//TODO: Rydding av kode og endret alt som er hardkodet. Ryddig og lesbar kode.
+
+
 
 class HomeFragment : Fragment() {
 
@@ -39,8 +51,10 @@ class HomeFragment : Fragment() {
 
          var valgt_iskrem = "0"
 
+
         //Manuelt lager Dessert-objektene
         fun menu() : MutableList<Dessert> {
+
 
             //Oppretter dessert-objektene manuelt her
             val des1 = Dessert(
@@ -76,6 +90,7 @@ class HomeFragment : Fragment() {
 
 
             val rolledIceCreamMeny : MutableList<Dessert> = mutableListOf(des1, des2, des3, des4)
+
             return rolledIceCreamMeny
 
         }
@@ -124,18 +139,30 @@ class HomeFragment : Fragment() {
         }
 
         displayMeny(menu())
+        //saveToDatabase()
 
     }
 
+/*
+    private fun saveToDatabase(){
 
+        val desserts = menu()
+
+        //SAVE LOCALLY TO DATABASE
+        for(dessert in desserts){
+            homeViewModel.saveToMenu(dessert)
+        }
+    }
+*/
 
 
     private fun displayMeny(dessertMenu: MutableList<Dessert>){
 
 
         viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu)//cardOnClick callback, håndterer når du trykker på spesifikk kort.
-                                                                                //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu)
+        //cardOnClick callback, håndterer når du trykker på spesifikk kort.
+        //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
 
         recyclerView = dessert_recyclerview.apply {
@@ -149,6 +176,7 @@ class HomeFragment : Fragment() {
             // specify an viewAdapter (see also next example)
             //adapter = viewAdapter
             dessert_recyclerview.adapter = viewAdapter
+
         }
 
     }
@@ -157,8 +185,11 @@ class HomeFragment : Fragment() {
     private fun cardOnClick() {
         //TODO: Finne ut hvordan Myadapter sender Dessert-objekt tilbake. Så du kan inhente id-en her.
         valgt_iskrem = "0"
+
+        //Open another fragment
         val activityIntent = Intent(requireContext(), DessertActivity::class.java)  //send iskrem id.
         startActivity(activityIntent)
+        //loadFragment()
     }
 
 
@@ -191,6 +222,15 @@ class HomeFragment : Fragment() {
 
         notificationManager.notify(notificationId, notification)
         counter++
+    }
+
+
+    private fun loadFragment(){
+
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.container, DessertFragment())
+        transaction?.isAddToBackStackAllowed
+        transaction?.commit()
     }
 
 }

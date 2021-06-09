@@ -38,6 +38,12 @@
     <string name="mine_kvitteringer">Mine Kvitteringer</string>
     <string name="mine_kj_p">Mine kjøp</string>
     <string name="konto">Konto</string>
+    <string name="bekreftKjopTekst1">TAKK FOR DIN BESTILLING,</string>
+    <string name="bekreftKjopTekst2">VELKOMMEN IGJEN!</string>
+    <string name="bekreftKjop_Tekst3">Hentes på Akerbrygge om 10 minutter.</string>
+    <string name="tilbake_til_start_Btn">tilbake til start</string>
+    <string name="bank_Btn">Bank</string>
+    <string name="vipps_btn">Vipps</string>
 
 
 </resources>

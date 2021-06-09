@@ -22,4 +22,18 @@
         android:name="com.example.fris.ui.profil.ProfilFragment"
         android:label="@string/title_profil"
         tools:layout="@layout/fragment_profil" />
+
+    <fragment
+        android:id="@+id/navigation_dessertFragment"
+        android:name="com.example.fris.DessertFragment"
+        android:label="Rolled-Ice Cream"
+        tools:layout="@layout/fragment_dessert" />
+
+    <fragment
+        android:id="@+id/navigation_bekreftKjop_Fragment"
+        android:name="com.example.fris.BekreftetKjop_Fragment"
+        android:label="Bekreftet"
+        tools:layout="@layout/fragment_bekreftet_kjop" />
+
+
 </navigation>
