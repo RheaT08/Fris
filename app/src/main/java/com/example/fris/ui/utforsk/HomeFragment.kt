@@ -1,5 +1,6 @@
 package com.example.fris.ui.utforsk
 
+import android.app.AlertDialog
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,14 +10,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fris.DessertActivity
-import com.example.fris.DessertFragment
-import com.example.fris.MyAdapter
-import com.example.fris.R
+import com.example.fris.*
+import com.example.fris.database.AppDatabase
 import com.example.fris.database.Dessert
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -138,12 +140,14 @@ class HomeFragment : Fragment() {
             createAndSendNotification()
         }
 
-        displayMeny(menu())
-        //saveToDatabase()
+        //menu() //oppretter dessert-objektene
+        saveToDatabase()
+        displayMeny()
+
 
     }
 
-/*
+
     private fun saveToDatabase(){
 
         val desserts = menu()
@@ -153,31 +157,28 @@ class HomeFragment : Fragment() {
             homeViewModel.saveToMenu(dessert)
         }
     }
-*/
 
 
-    private fun displayMeny(dessertMenu: MutableList<Dessert>){
+
+    private fun displayMeny(/*dessertMenu: MutableList<Dessert>*/){
 
 
-        viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
-        viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, dessertMenu)
-        //cardOnClick callback, håndterer når du trykker på spesifikk kort.
-        //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
+        Thread {
+            val theMenu = AppDatabase.getDatabase(FrisApplication.application.applicationContext).dessertDao().getAllDesserts()
 
+            activity?.runOnUiThread {
+                viewManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) //Make recyclerview scroll sideways.
+                viewAdapter = MyAdapter(requireContext(), { cardOnClick() }, theMenu)
+                //cardOnClick callback, håndterer når du trykker på spesifikk kort.
+                //legger inn listen min av dessert (Menyen) mates inn i recyclerview/adapter
 
-        recyclerView = dessert_recyclerview.apply {
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
-            setHasFixedSize(true)
-
-            // use a linear layout manager
-            layoutManager = viewManager
-
-            // specify an viewAdapter (see also next example)
-            //adapter = viewAdapter
-            dessert_recyclerview.adapter = viewAdapter
-
-        }
+                recyclerView = dessert_recyclerview.apply {
+                    setHasFixedSize(true)
+                    layoutManager = viewManager
+                    dessert_recyclerview.adapter = viewAdapter
+                }
+            }
+        }.start()
 
     }
 
@@ -186,7 +187,6 @@ class HomeFragment : Fragment() {
         //TODO: Finne ut hvordan Myadapter sender Dessert-objekt tilbake. Så du kan inhente id-en her.
         valgt_iskrem = "0"
 
-        //Open another fragment
         val activityIntent = Intent(requireContext(), DessertActivity::class.java)  //send iskrem id.
         startActivity(activityIntent)
         //loadFragment()
@@ -194,7 +194,6 @@ class HomeFragment : Fragment() {
 
 
     //NOTIFICATIONS
-
     //Her lager vi egen channel for notifications lokalt.
     private fun createNotificationChannel(){
 
@@ -225,6 +224,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    //TODO:
     private fun loadFragment(){
 
         val transaction = activity?.supportFragmentManager?.beginTransaction()

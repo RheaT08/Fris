@@ -8,53 +8,51 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fris.database.Dessert
+import com.example.fris.ui.utforsk.DessertView
 import com.example.fris.ui.utforsk.HomeFragment
+import kotlinx.android.synthetic.main.dessert_cardview.view.*
 
 
-class MyAdapter(var context: Context, var cardClicklistener:(Dessert) -> Unit, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(var context: Context, var cardClicklistener:(Dessert) -> Unit, private var dessertDataset: List<Dessert>): RecyclerView.Adapter<MyAdapter.DessertViewHolder>() {
 
-    //TODO: LAGE EGEN KLASSE AV DETTE, HVOR DU HAR ALT AV TEXT OG BILDER LAGRET (SE CHATBUBBLEVIEW FRA SMALLTALK).
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-            val name: TextView = view.findViewById(R.id.name_textview)
-            val image: ImageView = view.findViewById(R.id.dessert_Image)
-        }
+    //TODO: LAGE EGEN KLASSE AV DETTE, HVOR DU HAR ALT AV TEXT OG BILDER LAGRET. Som smalltalk chatbubbleview
+    //Gjort -> DessertView
+    inner class DessertViewHolder(val view: DessertView) : RecyclerView.ViewHolder(view)
+
 
         // Create new views (invoked by the layout manager)
-        override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DessertViewHolder {
 
-            // Create a new view, which defines the UI of the list item
-            val view = LayoutInflater.from(viewGroup.context).inflate(
-                R.layout.dessert_cardview,
-                viewGroup,
-                false
-            ) as View
+            val view = DessertView(parent.context)
 
-            return ViewHolder(view)
+            view.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            return DessertViewHolder(view)
         }
 
         // Replace the contents of a view (invoked by the layout manager)
-        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        override fun onBindViewHolder(viewHolder: DessertViewHolder, position: Int) {
 
-            viewHolder.name.text = dessertDataset[position].dessertName
-            val pic = dessertDataset[position].bilde
-
-            viewHolder.image.setImageResource(pic)
-
-            viewHolder.name.setOnClickListener {
-                cardClicklistener(dessertDataset[position])
-                HomeFragment.valgt_iskrem = dessertDataset[position].id
-            }
-
-            viewHolder.image.setOnClickListener {
-                cardClicklistener(dessertDataset[position])
-                HomeFragment.valgt_iskrem = dessertDataset[position].id
-            }
+            viewHolder.view.setDessertMenu(dessertDataset[position])
 
             //cardClicklistener. håndterer hvilken kort da som blir trykket på, og du sender det tilbake til Home. for eksempel dessert
             //som blir trykket på. Utifra det intenter du til neste activity fra HomeFragment.
-        }
 
+            viewHolder.view.name_textview.setOnClickListener {
+                cardClicklistener(dessertDataset[position])
+                HomeFragment.valgt_iskrem = dessertDataset[position].id
+            }
+
+            viewHolder.view.dessert_Image.setOnClickListener {
+                cardClicklistener(dessertDataset[position])
+                HomeFragment.valgt_iskrem = dessertDataset[position].id
+            }
+
+        }
 
 
         // Return the size of your dataset (invoked by the layout manager)
@@ -64,7 +62,6 @@ class MyAdapter(var context: Context, var cardClicklistener:(Dessert) -> Unit, p
             dessertDataset = newData
             notifyDataSetChanged()
         }
-
 
 
 }

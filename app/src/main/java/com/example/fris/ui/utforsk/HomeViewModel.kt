@@ -20,20 +20,22 @@ class HomeViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-/*
+
     //Lagrer dessertene som er i menyen lokalt i databasen
     fun saveToMenu(dessert : Dessert){
-        dessertDAO.insertDessert(dessert)
+        Thread {
+            dessertDAO.insertDessert(dessert)
+        }.start()
     }
 
 
-    fun getMenu(recyclerView: RecyclerView){
+    fun getMenu(){
 
         Thread {
             val theMenu = AppDatabase.getDatabase(FrisApplication.application.applicationContext).dessertDao().getAllDesserts()
         }.start()
 
-    }  */
+    }
 
 }
 
